@@ -22,7 +22,7 @@ export class BranchService {
   }
 
   createBranch(branch) {
-    let body = JSON.stringify(branch);
+    const body = JSON.stringify(branch);
     return this.http.post('/server/api/v1/branches', body, httpOptions);
   }
 

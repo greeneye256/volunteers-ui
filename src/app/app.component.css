@@ -1,8 +1,9 @@
 a {
+  text-transform: uppercase;
   display: inline-block;
   background-color: deepskyblue;
   text-decoration: ButtonFace;
-  width: 150px;
+  width: 190px;
   size: 70px;
   color: black;
   padding: 4px;

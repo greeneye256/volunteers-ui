@@ -18,7 +18,8 @@ export class CreateBranchComponent implements OnInit {
 
   ngOnInit() {
     this.branchForm = new FormGroup({
-        name: new FormControl('', Validators.required)
+        name: new FormControl('', Validators.required),
+        abbreviation: new FormControl('', Validators.required)
       }
     );
   }
@@ -32,7 +33,7 @@ export class CreateBranchComponent implements OnInit {
           return true;
         },
         error => {
-          this.validMessage = 'Filiala exista deja!';
+          this.validMessage = 'A aparut o eroare';
           return Observable.throw(error);
         }
       );

@@ -8,7 +8,7 @@ import {BranchService} from '../../services/branch/branch.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private branchService: BranchService) { }
+  constructor() { }
 
   ngOnInit() {
   }

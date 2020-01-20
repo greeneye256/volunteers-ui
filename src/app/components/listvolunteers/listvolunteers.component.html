@@ -1,1 +1,21 @@
-<p>listvolunteers works!</p>
+<div>
+  <table class="table table-bordered table-inverse">
+    <tr>
+      <th>ID</th>
+      <th>Nume</th>
+      <th>Prenume</th>
+      <th>Email</th>
+      <th>Numar de telefon</th>
+      <th>Filiala</th>
+    </tr>
+    <tr *ngFor="let volunteer of volunteers">
+      <td>{{volunteer.volunteerId}}</td>
+      <td>{{volunteer.firstName}}</td>
+      <td>{{volunteer.lastName}}</td>
+      <td>{{volunteer.email}}</td>
+      <td>{{volunteer.phoneNumber}}</td>
+      <td>{{volunteer.branch.name}}</td>
+
+    </tr>
+  </table>
+</div>
