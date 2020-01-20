@@ -1,0 +1,11 @@
+a {
+  display: inline-block;
+  background-color: deepskyblue;
+  text-decoration: ButtonFace;
+  width: 150px;
+  size: 70px;
+  color: black;
+  padding: 4px;
+  font-size: 20px;
+  margin-right: 2px;
+}

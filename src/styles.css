@@ -1,0 +1,8 @@
+body {
+  background-color: steelblue;
+  /*font: 300 16px/22px "Lato", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;*/
+}
+h1 {
+  font: 300 16px/22px "Lato";
+  font-size: 2em;
+}
