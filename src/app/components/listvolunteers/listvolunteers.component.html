@@ -1,3 +1,28 @@
+<div class="row">
+  <div class="col-lg-2">
+
+  </div>
+  <div class="col-lg-10">
+    <ng-multiselect-dropdown
+      name="branch"
+      [placeholder]="'Selectati filiala'"
+      [data]="branches"
+      formControlName="branch"
+      [disabled]="disabled"
+      [settings]="dropdownSettings"
+    >
+    </ng-multiselect-dropdown>
+  </div>
+</div>
+
+
+
+<select>
+  <option *ngFor="let branch of branches">{{branch.name}}</option>
+</select>
+<div *ngFor="let branch of branches">
+  {{branch.name}}: <input type="checkbox" id="checkBox">
+</div>
 <div>
   <table class="table table-bordered table-inverse">
     <tr>

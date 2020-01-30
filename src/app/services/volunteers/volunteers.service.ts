@@ -19,5 +19,16 @@ export class VolunteersService {
   getVolunteers() {
     return this.http.get('server/api/v1/volunteers');
   }
+
+  getVolunteersByBranch(branch: string) {
+    return this.http.get('server/api/v1/volunteers/by/' + branch);
+  }
+
+  createVolunteer(volunteer) {
+    // console.log(volunteer.toString());
+    const body = JSON.stringify;
+    return this.http.post('server/api/v1/volunteers', volunteer, httpOptions);
+  }
+
 }
 
