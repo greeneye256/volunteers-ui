@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
+import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-branch-form',
@@ -10,13 +10,13 @@ export class BranchFormComponent implements OnInit {
 
   branchForm: FormGroup;
 
-  constructor() {
+  constructor(private fb: FormBuilder) {
   }
 
   ngOnInit() {
-    this.branchForm = new FormGroup({
-      name: new FormControl(),
-      abbreviation: new FormControl()
+    this.branchForm = this.fb.group({
+      name: ['',[Validators.required, Validators.minLength(3)]],
+      abbreviation: ['',[Validators.required, Validators.minLength(2), Validators.maxLength(2)]]
     });
   }
 

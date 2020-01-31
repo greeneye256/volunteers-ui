@@ -1,20 +1,50 @@
-
 <div class="container">
-  <form>
+  <form [formGroup]="branchForm">
     <div class="form-group">
-      <label for="nameId">Nume</label>
+      <label for="nameId">Numele filialei</label>
       <input class="form-control"
              id="nameId"
              formControlName="name"
-
+             type="text"
+             placeholder="Numele filialei - se completeaza obligatoriu"
+             [ngClass]="{'is-invalid':(branchForm.get('name').touched || branchForm.get('name').dirty) && !branchForm.get('name').valid}"
       />
+      <span class="invalid-feedback">
+        <span *ngIf="branchForm.get('name').errors?.required">
+        Va rugam introduceti numele!
+        </span>
+        <span *ngIf="branchForm.get('name').errors?.minlength">
+        Numele trebuie sa aiba mai mult de 3 caractere
+        </span>
+      </span>
+
     </div>
     <div class="form-group">
       <label for="abbreviationId">Abreviere</label>
       <input class="form-control" id="abbreviationId"
              formControlName="abbreviation"
+             type="text"
+             placeholder="Abrevierea - se completeaza obligatoriu"
+             [ngClass]="{'is-invalid':(branchForm.get('abbreviation').touched || branchForm.get('abbreviation').dirty) && !branchForm.get('abbreviation').valid}"
       />
+      <span class="invalid-feedback">
+        <span *ngIf="branchForm.get('abbreviation').errors?.required">
+        Va rugam introduceti abrevierea!
+        </span>
+        <span *ngIf="branchForm.get('abbreviation').errors?.minlength || branchForm.get('abbreviation').errors?.maxlength">
+        Abrevierea trebuie sa aiba exact 2 litere
+        </span>
+      </span>
     </div>
-    <button type="submit" class="btn btn-primary">Creaza filiala</button>
+    <button type="submit"
+            class="btn btn-primary"
+            [title]="branchForm.valid ? 'Save your entered data' : 'Disabled until the form data is valid'"
+            [disabled]="!branchForm.valid"
+    >Creaza filiala
+    </button>
   </form>
 </div>
+<br> Dirty: {{branchForm.dirty}}
+<br> Touched: {{branchForm.touched}}
+<br> Valid: {{branchForm.valid}}
+<br> Value: {{branchForm.value | json}}
