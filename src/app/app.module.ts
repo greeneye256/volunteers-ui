@@ -14,6 +14,8 @@ import { ListvolunteersComponent } from './components/listvolunteers/listvolunte
 import { CreatevolunteerComponent } from './components/createvolunteer/createvolunteer.component';
 import {VolunteersListComponent} from './components/volunteers/volunteers-list.component';
 import { NgMultiSelectDropDownModule} from 'ng-multiselect-dropdown';
+import { BranchFormComponent } from './components/branch-form/branch-form.component';
+import { BranchFormTdfComponent } from './components/branch-form-tdf/branch-form-tdf.component';
 
 @NgModule({
     declarations: [
@@ -25,6 +27,8 @@ import { NgMultiSelectDropDownModule} from 'ng-multiselect-dropdown';
         ListvolunteersComponent,
         CreatevolunteerComponent,
         VolunteersListComponent,
+        BranchFormComponent,
+        BranchFormTdfComponent,
     ],
   imports: [
     BrowserModule,

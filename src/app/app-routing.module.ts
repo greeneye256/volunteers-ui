@@ -7,11 +7,16 @@ import {GoodhomeComponent} from './components/goodhome/goodhome.component';
 import {ListvolunteersComponent} from './components/listvolunteers/listvolunteers.component';
 import {CreatevolunteerComponent} from './components/createvolunteer/createvolunteer.component';
 import {VolunteersListComponent} from './components/volunteers/volunteers-list.component';
+import {BranchFormComponent} from './components/branch-form/branch-form.component';
 
 const routes: Routes = [
   {
     path: 'createvolunteer',
     component: CreatevolunteerComponent
+  },
+  {
+    path: 'branchform',
+    component: BranchFormComponent
   },
   {
     path: 'home',
