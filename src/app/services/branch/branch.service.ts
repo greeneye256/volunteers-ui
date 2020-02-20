@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 
@@ -11,13 +11,16 @@ const httpOptions = {
 })
 export class BranchService {
 
-  constructor(private http: HttpClient) { }
+  public branches;
+
+  constructor(private http: HttpClient) {
+  }
 
   getBranches() {
     return this.http.get('server/api/v1/branches');
   }
 
-  getBranch(id: number) {
+  getBranch(id: string) {
     return this.http.get('/server/api/v1/branches/' + id);
   }
 
@@ -26,4 +29,17 @@ export class BranchService {
     return this.http.post('/server/api/v1/branches', body, httpOptions);
   }
 
+  createResponseentityBranch(branch) {
+    const body = JSON.stringify(branch);
+    return this.http.post('/server/api/v1/branches/responseentity', body, httpOptions);
+  }
+
+  updateBranch(branch) {
+    const id = branch.branchId;
+    return this.http.put('server/api/v1/branches/' + id, branch, httpOptions);
+  }
+
+  deleteBranchById(branchId: string) {
+    return this.http.delete('server/api/v1/branches/' + branchId);
+  }
 }

@@ -1,0 +1,20 @@
+<div class='card' style="width: 70%; margin: auto">
+  <div class="card-header">
+    Lista filiale
+  </div>
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+      <th>Nume</th>
+      <th>Abreviere</th>
+      <th></th>
+    </thead>
+    <tr *ngFor="let branch of branches">
+      <td>{{branch.name}}</td>
+      <td>{{branch.abbreviation}}</td>
+      <td><a type="button" routerLink="/edit/branch/{{branch.branchId}}">Edit</a></td>
+      <td><button (click)="deleteBranch(branch.branchId)">Delete</button></td>
+    </tr>
+  </table>
+</div>
+</div>

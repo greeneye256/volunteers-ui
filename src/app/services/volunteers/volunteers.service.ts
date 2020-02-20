@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {Observable} from 'rxjs';
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -20,15 +19,21 @@ export class VolunteersService {
     return this.http.get('server/api/v1/volunteers');
   }
 
-  getVolunteersByBranch(branch: string) {
-    return this.http.get('server/api/v1/volunteers/by/' + branch);
-  }
-
   createVolunteer(volunteer) {
-    // console.log(volunteer.toString());
-    const body = JSON.stringify;
     return this.http.post('server/api/v1/volunteers', volunteer, httpOptions);
   }
 
+  getVolunteerById(id: string) {
+    return this.http.get('server/api/v1/volunteers/' + id);
+  }
+
+  updateVolunteer(volunteer) {
+    const id = volunteer.volunteerId;
+    return this.http.put('server/api/v1/volunteers/' + id, volunteer);
+  }
+
+  deleteVolunteer(id: string) {
+    return this.http.delete('server/api/v1/volunteers/' + id);
+  }
 }
 

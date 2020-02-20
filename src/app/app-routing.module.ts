@@ -1,15 +1,37 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {AdminComponent} from './components/admin/admin.component';
 import {HomeComponent} from './components/home/home.component';
-import {CreateBranchComponent} from './components/create-branch/create-branch.component';
-import {GoodhomeComponent} from './components/goodhome/goodhome.component';
-import {ListvolunteersComponent} from './components/listvolunteers/listvolunteers.component';
-import {CreatevolunteerComponent} from './components/createvolunteer/createvolunteer.component';
-import {VolunteersListComponent} from './components/volunteers/volunteers-list.component';
-import {BranchFormComponent} from './components/branch-form/branch-form.component';
+import {CreatevolunteerComponent} from './components/create-volunteer/createvolunteer.component';
+import {VolunteersListComponent} from './components/volunteers-list/volunteers-list.component';
+import {BranchFormComponent} from './components/create-branch/branch-form.component';
+import {EditVolunteerComponent} from './components/edit-volunteer/edit-volunteer.component';
+import { BranchesListComponent } from './components/branches-list/branches-list.component';
+import { EditBranchComponent} from './components/edit-branch/edit-branch.component';
+import {MemberCreateComponent} from './components/member/member-create/member-create.component';
+import {MembersListComponent} from './components/member/members-list/members-list.component';
+import {MemberEditComponent} from './components/member/member-edit/member-edit.component';
 
 const routes: Routes = [
+  {
+    path: 'memberslist',
+    component: MembersListComponent
+  },
+  {
+    path: 'membercreate',
+    component: MemberCreateComponent
+  },
+  {
+    path: 'brancheslist',
+    component: BranchesListComponent
+  },
+  {
+    path: 'edit/branch/:id',
+    component: EditBranchComponent
+  },
+  {
+    path: 'edit/member/:id',
+    component: MemberEditComponent
+  },
   {
     path: 'createvolunteer',
     component: CreatevolunteerComponent
@@ -19,24 +41,8 @@ const routes: Routes = [
     component: BranchFormComponent
   },
   {
-    path: 'home',
-    component: GoodhomeComponent
-  },
-  {
-    path: 'listvolunteers',
-    component: ListvolunteersComponent
-  },
-  {
     path: '',
     component: HomeComponent
-  },
-  {
-    path: 'createbranch',
-    component: CreateBranchComponent
-  },
-  {
-    path: 'admin',
-    component: AdminComponent
   },
   {
     path: 'volunteerslist',

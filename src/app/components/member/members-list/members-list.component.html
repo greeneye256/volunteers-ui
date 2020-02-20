@@ -1,0 +1,42 @@
+<div class='card'>
+  <div class="card-header">
+    Lista membrii
+  </div>
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+      <tr>
+        <th>Nume</th>
+        <th>Prenume</th>
+        <th>Data nasterii</th>
+        <th>Sex</th>
+        <th>Religion</th>
+        <th>Email</th>
+        <th>Numar de telefon</th>
+        <th>Filiala</th>
+        <th>Statut</th>
+        <th>Alte informatii</th>
+        <th></th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let member of members">
+        <td>{{member.lastName | uppercase}}</td>
+        <td>{{member.firstName | uppercase}}</td>
+        <td>{{member.birthDate | date}}</td>
+        <td>{{member.gender}}</td>
+        <td>{{member.religion}}</td>
+        <td>{{member.email}}</td>
+        <td>{{member.phone}}</td>
+        <td>{{member.branch.name | uppercase}}</td>
+        <td>{{member.typeOfStatus | uppercase}}</td>
+        <td>{{member.otherInfo}}</td>
+        <td><a type="button" routerLink="/edit/member/{{member.id}}">Edit</a></td>
+        <td><button (click)="deleteMember(member.id)">Delete</button></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+

@@ -1,0 +1,300 @@
+<div class="container">
+  <form [formGroup]="memberForm" (ngSubmit)="saveMember()" autocomplete="off">
+    <div class="form-group">
+      <label for="typeOfStatus">Statutul persoanei</label>
+      <select id="typeOfStatus" class="form-control" formControlName="typeOfStatus" required
+              [ngClass]="{'is-invalid':(memberForm.get('typeOfStatus').touched || memberForm.get('typeOfStatus').dirty) && !memberForm.get('typeOfStatus').valid}">
+        <option value="" disabled>Alegeti statutul persoanei</option>
+        <option *ngFor="let type of memberType" value="{{type.val}}">{{type.name}}</option>
+      </select>
+      <span class="invalid-feedback">
+        <span *ngIf="memberForm.get('typeOfStatus').errors?.required">
+        Va rugam selectati statutul persoanei!
+        </span>
+      </span>
+    </div>
+    <div class="form-group">
+      <label for="branch">Filiala</label>
+      <select id="branch" class="form-control" formControlName="branch" required
+              [ngClass]="{'is-invalid':(memberForm.get('religion').touched || memberForm.get('religion').dirty) && !memberForm.get('religion').valid}">
+        <option value="" disabled>Selectati filiala</option>
+        <option *ngFor="let branch of branches" [ngValue]="branch">{{branch.name}}</option>
+      </select>
+      <span class="invalid-feedback">
+        <span *ngIf="memberForm.get('branch').errors?.required">
+        Va rugam selectati filiala!
+        </span>
+      </span>
+    </div>
+    <div class="form-group">
+      <label for="lastName">Nume</label>
+      <input class="form-control" id="lastName"
+             formControlName="lastName"
+             type="text"
+             placeholder="se completeaza obligatoriu"
+             onfocus="placeholder = ''"
+             [ngClass]="{'is-invalid':(memberForm.get('lastName').touched || memberForm.get('lastName').dirty) && !memberForm.get('lastName').valid}"
+      />
+      <span class="invalid-feedback">
+        <span *ngIf="memberForm.get('lastName').errors?.required">
+        Va rugam introduceti numele!
+        </span>
+      </span>
+    </div>
+    <div class="form-group">
+      <label for="firstName">Prenume</label>
+      <input class="form-control"
+             id="firstName"
+             formControlName="firstName"
+             type="text"
+             placeholder="se completeaza obligatoriu"
+             onfocus="placeholder = ''"
+             [ngClass]="{'is-invalid':(memberForm.get('firstName').touched || memberForm.get('firstName').dirty) && !memberForm.get('firstName').valid}"
+      />
+      <span class="invalid-feedback">
+        <span *ngIf="memberForm.get('firstName').errors?.required">
+        Va rugam introduceti prenumele!
+        </span>
+      </span>
+    </div>
+    <div class="form-group">
+      <label for="birthDate">Data nasterii</label>
+      <input class="form-control" id="birthDate"
+             formControlName="birthDate"
+             type="date"
+             [ngClass]="{'is-invalid':(memberForm.get('birthDate').touched || memberForm.get('birthDate').dirty) && !memberForm.get('birthDate').valid}"
+      />
+      <span class="invalid-feedback">
+        <span *ngIf="memberForm.get('birthDate').errors?.required">
+        Va rugam introduceti data nasterii!
+        </span>
+      </span>
+    </div>
+    <div class="form-group">
+      <label for="gender" class="radio-label-span">Sex:</label>
+      <label class="radio-inline radiolabel">
+        <input id="gender" class="radiobutton" formControlName="gender" type="radio" name="gender" value="M">Masculin
+      </label>
+      <label class="radio-inline  radiolabel">
+        <input class="radiobutton" formControlName="gender" type="radio" name="gender" value="F">Feminin
+      </label>
+    </div>
+    <div class="form-group">
+      <label for="religion">Religia</label>
+      <select id="religion" class="form-control" formControlName="religion" required [ngClass]="{'is-invalid':(memberForm.get('religion').touched || memberForm.get('religion').dirty) && !memberForm.get('religion').valid}">
+        <option value="" disabled>Selectati una dintre optiuni</option>
+        <option *ngFor="let religion of religions" value="{{religion.val}}">{{religion.name}}</option>
+      </select>
+      <span class="invalid-feedback">
+        <span *ngIf="memberForm.get('religion').errors?.required">
+        Va rugam introduceti religia!
+        </span>
+      </span>
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input id="email"
+             type="email"
+             class="form-control"
+             formControlName="email"
+             [ngClass]="{'is-invalid':(memberForm.get('email').touched || memberForm.get('email').dirty) && !memberForm.get('email').valid}"
+             autofocus/>
+      <span class="invalid-feedback">
+        <span *ngIf="memberForm.get('email').errors?.required">
+        Va rugam introduceti email-ul!
+        </span>
+      </span>
+    </div>
+    <div class="form-group">
+      <label for="phone">Numar de telefon</label>
+      <input id="phone"
+             type="tel"
+             class="form-control"
+             formControlName="phone"
+             placeholder="se completeaza obligatoriu"
+             onfocus="placeholder = ''"
+             [ngClass]="{'is-invalid':(memberForm.get('phone').touched || memberForm.get('phone').dirty) && !memberForm.get('phone').valid}"
+             autofocus/>
+      <span class="invalid-feedback">
+        <span *ngIf="memberForm.get('phone').errors?.required">
+        Va rugam introduceti numarul de telefon!
+        </span>
+      </span>
+    </div>
+
+    <div class="form-group">
+      <label for="personalNumericCode">CNP</label>
+      <input class="form-control"
+             id="personalNumericCode"
+             formControlName="personalNumericCode"
+             type="text"
+             placeholder="se completeaza obligatoriu"
+             onfocus="placeholder = ''"
+             [ngClass]="{'is-invalid':(memberForm.get('personalNumericCode').touched || memberForm.get('personalNumericCode').dirty) && !memberForm.get('personalNumericCode').valid}"
+      />
+      <span class="invalid-feedback">
+        <span *ngIf="memberForm.get('personalNumericCode').errors?.required">
+        Va rugam introduceti CNP!
+        </span>
+      </span>
+    </div>
+    <div class="form-group">
+      <label for="identityCardNumber">Seria si numarul de pe cartea de identitate (ex: KX 010101)</label>
+      <input class="form-control"
+             id="identityCardNumber"
+             formControlName="identityCardNumber"
+             type="text"
+             placeholder="se completeaza obligatoriu"
+             onfocus="placeholder = ''"
+             [ngClass]="{'is-invalid':(memberForm.get('identityCardNumber').touched || memberForm.get('identityCardNumber').dirty) && !memberForm.get('identityCardNumber').valid}"
+      />
+      <span class="invalid-feedback">
+        <span *ngIf="memberForm.get('identityCardNumber').errors?.required">
+        Va rugam introduceti seria si numarul de pe buletin!
+        </span>
+      </span>
+    </div>
+    <div class="form-group">
+      <label for="address">Adresa (strada, nr, bloc, scara, ap)</label>
+      <input class="form-control"
+             id="address"
+             formControlName="address"
+             type="text"
+             placeholder="se completeaza obligatoriu"
+             onfocus="placeholder = ''"
+             [ngClass]="{'is-invalid':(memberForm.get('address').touched || memberForm.get('address').dirty) && !memberForm.get('address').valid}"
+      />
+      <span class="invalid-feedback">
+        <span *ngIf="memberForm.get('address').errors?.required">
+        Va rugam introduceti adresa!
+        </span>
+      </span>
+    </div>
+    <div class="form-group">
+      <label for="zipCode">Cod postal</label>
+      <input class="form-control"
+             id="zipCode"
+             formControlName="zipCode"
+             type="text"
+             placeholder="se completeaza obligatoriu"
+             onfocus="placeholder = ''"
+             [ngClass]="{'is-invalid':(memberForm.get('zipCode').touched || memberForm.get('zipCode').dirty) && !memberForm.get('zipCode').valid}"
+      />
+      <span class="invalid-feedback">
+        <span *ngIf="memberForm.get('zipCode').errors?.required">
+        Va rugam introduceti codul postal!
+        </span>
+      </span>
+    </div>
+    <div class="form-group">
+      <label for="city">Localitate</label>
+      <input class="form-control"
+             id="city"
+             formControlName="city"
+             type="text"
+             placeholder="se completeaza obligatoriu"
+             onfocus="placeholder = ''"
+             [ngClass]="{'is-invalid':(memberForm.get('city').touched || memberForm.get('city').dirty) && !memberForm.get('city').valid}"
+      />
+      <span class="invalid-feedback">
+        <span *ngIf="memberForm.get('city').errors?.required">
+        Va rugam introduceti orasul!
+        </span>
+      </span>
+    </div>
+    <div class="form-group">
+      <label for="county">Judet</label>
+      <input class="form-control"
+             id="county"
+             formControlName="county"
+             type="text"
+             placeholder="se completeaza obligatoriu"
+             onfocus="placeholder = ''"
+             [ngClass]="{'is-invalid':(memberForm.get('county').touched || memberForm.get('county').dirty) && !memberForm.get('county').valid}"
+      />
+      <span class="invalid-feedback">
+        <span *ngIf="memberForm.get('county').errors?.required">
+        Va rugam introduceti judetul!
+        </span>
+      </span>
+    </div>
+    <div class="form-group">
+      <label for="country">Tara</label>
+      <input class="form-control"
+             id="country"
+             formControlName="country"
+             type="text"
+             placeholder="se completeaza obligatoriu"
+             onfocus="placeholder = ''"
+             [ngClass]="{'is-invalid':(memberForm.get('country').touched || memberForm.get('country').dirty) && !memberForm.get('country').valid}"
+      />
+      <span class="invalid-feedback">
+        <span *ngIf="memberForm.get('country').errors?.required">
+        Va rugam introduceti tara!
+        </span>
+      </span>
+    </div>
+
+    <div class="form-group">
+      <label for="educationType">Educatia </label>
+      <select id="educationType" class="form-control" formControlName="educationType" required
+              [ngClass]="{'is-invalid':(memberForm.get('educationType').touched || memberForm.get('educationType').dirty) && !memberForm.get('educationType').valid}">
+        <option value="" disabled>Selectati tipul de educatie</option>
+        <option *ngFor="let education of education" value="{{education.val}}">{{education.name}}</option>
+      </select>
+      <span class="invalid-feedback">
+        <span *ngIf="memberForm.get('educationType').errors?.required">
+        Va rugam introduceti educatia!
+        </span>
+      </span>
+    </div>
+    <div class="form-group">
+      <label for="educationInfo">Detalii educatie(numele scolii,numele facultatii, specializare, etc.)</label>
+      <input class="form-control"
+             id="educationInfo"
+             formControlName="educationInfo"
+             type="text"
+             placeholder="se completeaza obligatoriu"
+             onfocus="placeholder = ''"
+             [ngClass]="{'is-invalid':(memberForm.get('educationInfo').touched || memberForm.get('educationInfo').dirty) && !memberForm.get('educationInfo').valid}"
+      />
+      <span class="invalid-feedback">
+        <span *ngIf="memberForm.get('educationInfo').errors?.required">
+        Va rugam introduceti detalii despre educatie (numele scolii,numele facultatii, specializare, etc.)
+        </span>
+      </span>
+    </div>
+    <div class="form-group">
+      <label for="isCoordinator" class="radio-label-span">Coordonator voluntari:</label>
+      <label class="radio-inline radiolabel">
+        <input id="isCoordinator" class="radiobutton" formControlName="isCoordinator" type="radio" name="isCoordinator" value=1>Da
+      </label>
+      <label class="radio-inline  radiolabel">
+        <input class="radiobutton" formControlName="isCoordinator" type="radio" name="isCoordinator" value=0>Nu
+      </label>
+    </div>
+
+    <div class="form-group">
+      <label for="otherInfo">Detalii educatie(numele scolii,numele facultatii, specializare, etc.)</label>
+      <input class="form-control"
+             id="otherInfo"
+             formControlName="otherInfo"
+             type="text"
+             placeholder="informatii suplimentare"
+             onfocus="placeholder = ''"
+             [ngClass]="{'is-invalid':(memberForm.get('otherInfo').touched || memberForm.get('otherInfo').dirty) && !memberForm.get('otherInfo').valid}"
+      />
+    </div>
+
+    <button type="submit"
+              class="btn btn-primary"
+              [title]="memberForm.valid ? 'Save your entered data' : 'Disabled until the form data is valid'"
+              [disabled]="!memberForm.valid"
+      >Salveaza
+    </button>
+  </form>
+</div>
+<br> Dirty: {{memberForm.dirty}}
+<br> Touched: {{memberForm.touched}}
+<br> Valid: {{memberForm.valid}}
+<br> Value: {{memberForm.value | json}}
