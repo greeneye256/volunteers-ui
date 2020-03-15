@@ -14,6 +14,7 @@ export class MembersListComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log('you are in memberlist component');
     this.getMembers();
   }
 

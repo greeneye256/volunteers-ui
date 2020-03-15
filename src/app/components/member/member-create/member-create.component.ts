@@ -3,6 +3,7 @@ import {MembersrvService} from '../../../services/member/membersrv.service';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {BranchService} from '../../../services/branch/branch.service';
+import Instance = WebAssembly.Instance;
 
 @Component({
   selector: 'app-member-create',
@@ -58,6 +59,11 @@ export class MemberCreateComponent implements OnInit {
     this.memberForm = this.fb.group({
       firstName: new FormControl('', Validators.required),
       lastName: new FormControl('', Validators.required),
+      membershipDetails: this.fb.group({
+        dateOfRegistrationInSAMR: new FormControl('', Validators.required),
+        dateOfRegistrationInDatabase: new FormControl(new Date(Date.now())),
+        dueAmount: new FormControl('0')
+      }),
       birthDate: new FormControl('', Validators.required),
       gender: new FormControl('', Validators.required),
       religion: new FormControl('', Validators.required),

@@ -1,0 +1,18 @@
+<div class='card' style="width: 70%; margin: auto">
+  <div class="card-header">
+    Lista cotizatii
+  </div>
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+      <th>Data</th>
+      <th>Suma</th>
+      <th></th>
+      </thead>
+      <tr *ngFor="let fee of fees">
+        <td>{{fee.date}}</td>
+        <td>{{fee.fee}}</td>
+      </tr>
+    </table>
+  </div>
+</div>

@@ -13,10 +13,26 @@
         </span>
       </span>
     </div>
+    <div formGroupName="membershipDetails">
+      <div class="form-group">
+        <label for="dateOfRegistrationInSAMR">Data inregistrarii in SAMR</label>
+        <input class="form-control" id="dateOfRegistrationInSAMR"
+               formControlName="dateOfRegistrationInSAMR"
+               type="date"
+               [ngClass]="{'is-invalid':(memberForm.get('membershipDetails').get('dateOfRegistrationInSAMR').touched || memberForm.get('membershipDetails').get('dateOfRegistrationInSAMR').dirty) && !memberForm.get('membershipDetails').get('dateOfRegistrationInSAMR').valid}"
+        />
+        <span class="invalid-feedback">
+        <span *ngIf="memberForm.get('membershipDetails').get('dateOfRegistrationInSAMR').errors?.required">
+        Va rugam introduceti data inregistrarii in SAMR!
+        </span>
+      </span>
+      </div>
+
+    </div>
     <div class="form-group">
       <label for="branch">Filiala</label>
       <select id="branch" class="form-control" formControlName="branch" required
-              [ngClass]="{'is-invalid':(memberForm.get('religion').touched || memberForm.get('religion').dirty) && !memberForm.get('religion').valid}">
+              [ngClass]="{'is-invalid':(memberForm.get('branch').touched || memberForm.get('branch').dirty) && !memberForm.get('branch').valid}">
         <option value="" disabled>Selectati filiala</option>
         <option *ngFor="let branch of branches" [ngValue]="branch">{{branch.name}}</option>
       </select>
@@ -275,7 +291,7 @@
     </div>
 
     <div class="form-group">
-      <label for="otherInfo">Detalii educatie(numele scolii,numele facultatii, specializare, etc.)</label>
+      <label for="otherInfo">Alte informatii</label>
       <input class="form-control"
              id="otherInfo"
              formControlName="otherInfo"

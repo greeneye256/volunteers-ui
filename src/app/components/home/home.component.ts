@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {BranchService} from '../../services/branch/branch.service';
+import {ApplicationUser} from '../../model/applicationUser';
+import {Router} from '@angular/router';
+import {AuthenticationService} from '../../services/authentication/authentication.service';
 
 @Component({
   selector: 'app-home',
@@ -8,9 +11,7 @@ import {BranchService} from '../../services/branch/branch.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit() {
+  ngOnInit(): void {
   }
 
 }

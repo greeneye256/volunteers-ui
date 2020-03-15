@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {BranchService} from '../../../services/branch/branch.service';
-import {VolunteersService} from '../../../services/volunteers/volunteers.service';
 import {MembersrvService} from '../../../services/member/membersrv.service';
 
 @Component({
@@ -43,7 +42,7 @@ export class MemberEditComponent implements OnInit {
   }
 
 
-  getVolunteer() {
+  getMember() {
     this.memberService.getMemberById(this.id).subscribe(
       data => {
         this.memberToEdit = data;
@@ -62,7 +61,7 @@ export class MemberEditComponent implements OnInit {
       .subscribe(
         data => {
           this.branches = data;
-          this.getVolunteer();
+          this.getMember();
         },
         err => console.error(err),
         () => {
@@ -83,6 +82,7 @@ export class MemberEditComponent implements OnInit {
   }
 
   updateVolunteer() {
+    alert('ati intrat in metoda de schimbare a membrului')
     Object.assign(this.memberToEdit, this.memberForm.value);
     this.memberService.updateMember(this.memberToEdit).subscribe(
       data => {

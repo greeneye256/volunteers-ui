@@ -1,13 +1,16 @@
 <div style="font-size: 15pt; text-align: center">
   <img src="/../assets/img/maltez.png">
-  <h1>APLICATIE VOLUNTARI</h1>
+  <h1 style="margin-top: 10px" >APLICATIE VOLUNTARI</h1>
+  <p style="margin-right: 20px">{{name}}<a style="margin-left: 20px; margin-right: 20px" *ngIf="isAuthenticated" (click)="logout()">Logout</a></p>
 </div>
-<nav style="text-align: center">
-  <a routerLink="">Acasa</a>
-  <a routerLink="/branchform">Adauga filiala</a>
-  <a routerLink="/brancheslist">Lista Filiale</a>
-  <a routerLink="/membercreate">Adauga membru</a>
-  <a routerLink="/memberslist">Lista membrii</a>
+<nav *ngIf="isAuthenticated" style="text-align: center">
+  <a class="nav-item nav-link" routerLink="/home">Acasa</a>
+  <a class="nav-item nav-link" routerLink="/branchform" *ngIf="isAdmin">Adauga filiala</a>
+  <a class="nav-item nav-link" routerLink="/brancheslist" *ngIf="isAdmin">Lista Filiale</a>
+  <a class="nav-item nav-link" routerLink="/membercreate" *ngIf="isAdmin || isWrite">Adauga membru</a>
+  <a class="nav-item nav-link" routerLink="/memberslist" *ngIf="isAdmin || isWrite || isUser">Lista membrii</a>
+  <a class="nav-item nav-link" routerLink="/users" *ngIf="isAdmin">Lista useri</a>
+  <a class="nav-item nav-link" routerLink="/sign-up" *ngIf="isAdmin">Sign-up user</a>
 
 </nav>
 

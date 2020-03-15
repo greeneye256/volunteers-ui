@@ -31,6 +31,18 @@ export class MembersrvService {
 
   updateMember(member) {
     const id = member.id;
+    alert('ati intrat in service member cu id de membru' + id);
     return this.http.put('server/api/v1/members/' + id, member, httpOptions);
+  }
+
+  getFeesFromMember(id) {
+    return this.http.get('server/api/v1/members/fees/' + id);
+  }
+
+  getMembershipDetailsId(id) {
+    return this.http.get('server/api/v1/members/membershipDetailsId/' + id);
+  }
+  getMembershipDetails(id) {
+    return this.http.get('server/api/v1/members/membershipDetails/' + id);
   }
 }

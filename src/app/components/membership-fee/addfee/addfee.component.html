@@ -1,0 +1,53 @@
+<div class="container">
+  <form [formGroup]="feeForm" (ngSubmit)="saveMembershipFee()" autocomplete="off">
+    <div class="form-group">
+      <label for="date">Data</label>
+      <input class="form-control"
+             id="date"
+             formControlName="date"
+             type="date"
+             placeholder="Introduceti data cu luna aferenta cotizatiei"
+             [ngClass]="{'is-invalid':(feeForm.get('date').touched || feeForm.get('date').dirty) && !feeForm.get('date').valid}"
+      />
+      <span class="invalid-feedback">
+        <span *ngIf="feeForm.get('date').errors?.required">
+        Va rugam introduceti data cu luna aferenta cotizatiei!
+        </span>
+      </span>
+
+    </div>
+    <div class="form-group">
+      <label for="fee">Suma platita fara zecimale in lei</label>
+      <input class="form-control" id="fee"
+             formControlName="fee"
+             type="number"
+             placeholder="Suma - se completeaza obligatoriu"
+             onfocus="placeholder = ''"
+             [ngClass]="{'is-invalid':(feeForm.get('fee').touched || feeForm.get('fee').dirty) && !feeForm.get('fee').valid}"
+      />
+      <span class="invalid-feedback">
+        <span *ngIf="feeForm.get('fee').errors?.required">
+        Va rugam introduceti suma platita in lei!
+        </span>
+      </span>
+    </div>
+    <div *ngIf="false">
+      <label>
+        <input class="form-control"
+               formControlName="member"
+               [value]="member"
+        />
+      </label>
+    </div>
+    <button type="submit"
+            class="btn btn-primary"
+            [title]="feeForm.valid ? 'Salvati datele' : 'Nu ati introdus datele necesare pentru a salva data'"
+            [disabled]="!feeForm.valid"
+    >Salveaza datele
+    </button>
+  </form>
+</div>
+<br> Dirty: {{feeForm.dirty}}
+<br> Touched: {{feeForm.touched}}
+<br> Valid: {{feeForm.valid}}
+<br> Value: {{feeForm.value | json}}
