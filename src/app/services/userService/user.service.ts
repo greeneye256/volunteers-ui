@@ -18,7 +18,7 @@ export class UserService {
   constructor(private http: HttpClient, private messageService: MessageService) {
   }
 
-  userUrl = 'server/api/v1/users/';
+  userUrl = 'server/api/v1/users';
 
   private log(message: string) {
     this.messageService.add(`UserService: ${message}`);
@@ -29,7 +29,7 @@ export class UserService {
   }
 
   getById(id: string) {
-    return this.http.get<ApplicationUser>(this.userUrl + id.toString());
+    return this.http.get<ApplicationUser>(this.userUrl + '/' + id.toString());
   }
 
   createUser(applicationUser: ApplicationUser) {
@@ -38,13 +38,13 @@ export class UserService {
   }
 
   deleteUserById(id: string) {
-    return this.http.delete(this.userUrl + id);
+    return this.http.delete(this.userUrl + '/' + id);
   }
 
   updateUser(user) {
     const id: string = user.id;
     const body = JSON.stringify(user);
     alert('ati intrat in service member cu id de membru' + id);
-    return this.http.put(this.userUrl + id, body, httpOptions);
+    return this.http.put(this.userUrl + '/' + id, body, httpOptions);
   }
 }

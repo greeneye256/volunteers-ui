@@ -13,8 +13,6 @@ export class AddfeeComponent implements OnInit {
 
   memberId: string;
   member;
-  membershipDetailsId;
-  membershipDetails = {id: 4};
   feeForm: FormGroup;
 
   constructor(
@@ -27,12 +25,12 @@ export class AddfeeComponent implements OnInit {
 
   ngOnInit() {
     this.memberId = this.activatedRoute.snapshot.paramMap.get('id');
-    this.membersrvService.getMembershipDetailsId(this.memberId).subscribe(data => {
-      this.membershipDetailsId = data;
+    this.membersrvService.getMemberById(this.memberId).subscribe(data => {
+      this.member = data;
       this.feeForm = this.fb.group({
         date: new FormControl('', Validators.required),
         fee: new FormControl('', Validators.required),
-        membershipDetails: this.fb.group({id: new FormControl(this.membershipDetailsId)})
+        member: new FormControl(this.member)
       });
     });
   }

@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 import {BranchService} from '../../services/branch/branch.service';
 import {Router} from '@angular/router';
-import {HttpErrorResponse} from '@angular/common/http';
 
 @Component({
   selector: 'app-branch-form',
@@ -19,7 +18,7 @@ export class BranchFormComponent implements OnInit {
   ngOnInit() {
     this.branchForm = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(3)]],
-      abbreviation: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(2)]]
+      abbreviation: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(5)]]
     });
   }
 

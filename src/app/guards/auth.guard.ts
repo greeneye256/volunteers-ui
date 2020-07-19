@@ -12,12 +12,12 @@ export class AuthGuard implements CanActivate {
   currentUser: ApplicationUser;
 
   constructor(private router: Router, private authenticationService: AuthenticationService) {
-    this.currentUser = this.authenticationService.currentUserValue;
   }
 
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot) {
+    this.currentUser = this.authenticationService.currentUserValue;
     if (this.currentUser) {
       if (route.data.roles) {
         console.log(route.data.roles);

@@ -38,11 +38,4 @@ export class MembersrvService {
   getFeesFromMember(id) {
     return this.http.get('server/api/v1/members/fees/' + id);
   }
-
-  getMembershipDetailsId(id) {
-    return this.http.get('server/api/v1/members/membershipDetailsId/' + id);
-  }
-  getMembershipDetails(id) {
-    return this.http.get('server/api/v1/members/membershipDetails/' + id);
-  }
 }

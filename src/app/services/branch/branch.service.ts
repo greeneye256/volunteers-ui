@@ -22,7 +22,7 @@ export class BranchService {
   }
 
   createBranch(branch) {
-    alert('esti in branch service')
+    alert('esti in branch service');
     const body = JSON.stringify(branch);
     return this.http.post('server/api/v1/branches', body, httpOptions);
   }

@@ -33,8 +33,8 @@
         <td>{{member.typeOfStatus | uppercase}}</td>
         <td>{{member.otherInfo}}</td>
         <td><a type="button" routerLink="/edit/member/{{member.id}}">Edit</a></td>
-        <td><a type="button" routerLink="/add-fee/{{member.id}}">Adaguga cotizatie</a></td>
-        <td><a type="button" routerLink="/feelist/{{member.id}}">Cotizatii</a></td>
+        <td *ngIf="member.typeOfStatus == 'MEMBER_VOLUNTEER' || member.typeOfStatus == 'MEMBER'"><a type="button" routerLink="/add-fee/{{member.id}}">Adaguga cotizatie</a></td>
+        <td *ngIf="member.typeOfStatus == 'MEMBER_VOLUNTEER' || member.typeOfStatus == 'MEMBER'"><a type="button" routerLink="/feelist/{{member.id}}">Cotizatii</a></td>
         <td><button (click)="deleteMember(member.id)">Delete</button></td>
       </tr>
       </tbody>
